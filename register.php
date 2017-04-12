@@ -13,9 +13,10 @@ mysql_select_db($dbname);
 //$usernmIn=from front end;
 //$passwdIn=from front end;
 
-$checkQuery = $mysqli_prepare($conn,"IF NOT EXIST (SELECT username,password FROM users WHERE username=? AND password=?"));
-mysqli_stmt_bind_param($checkQuery,'ss',$usernmIn,$passwdIn);
+$checkQuery = $mysqli_prepare($conn,"IF NOT EXIST (SELECT username,password FROM users WHERE username=? AND password=?")); //not proper syntax
+mysqli_stmt_bind_param($checkQuery,'ss',$usernmIn,$passwdIn); //not proper syntax
 
+//possibly incorrect syntax as well in if statement
 if(mysqli_stmt_execute($checkQuery)) {
   
   $salty=mcrypt_create_iv(10);
